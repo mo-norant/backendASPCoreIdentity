@@ -8,16 +8,16 @@ using IdentityServer4.AccessTokenValidation;
 
 namespace AspIdentityServer.Controllers
 {
-    [Authorize(AuthenticationSchemes = IdentityServerAuthenticationDefaults.AuthenticationScheme, Policy = "Manage administrator")]
+    [Authorize(AuthenticationSchemes = IdentityServerAuthenticationDefaults.AuthenticationScheme, Policy = "Access Resources")]
 
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {
         // GET api/values
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+            return new OkObjectResult("IS GELUKT");
         }
 
         // GET api/values/5
