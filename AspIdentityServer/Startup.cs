@@ -45,6 +45,20 @@ namespace AspIdentityServer
                 options.AddPolicy("Access Resources", policy => policy.RequireRole("administrator", "user"));
             });
 
+             services.Configure<IdentityOptions>(options =>
+            {
+                // Password settings.
+                options.Password.RequireDigit = true;
+                options.Password.RequiredLength = 8;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = true;
+                options.Password.RequireLowercase = false;
+                // Lockout settings.
+                options.Lockout.AllowedForNewUsers = true;
+                options.Lockout.MaxFailedAccessAttempts = 3;
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromDays(1);
+            });
+
             services.AddIdentityServer()
         .AddDeveloperSigningCredential()
         .AddInMemoryPersistedGrants()
