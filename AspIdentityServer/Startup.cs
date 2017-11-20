@@ -31,7 +31,7 @@ namespace AspIdentityServer
 
 
             services.AddDbContext<ApplicationDBcontext>(options =>
-                 options.UseSqlServer(Configuration.GetConnectionString("DB")));
+                 options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=ASPIDENTITYSERVER;Trusted_Connection=True;"));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDBcontext>()
@@ -40,7 +40,7 @@ namespace AspIdentityServer
             services.AddAuthorization(options =>
             {
                 // Policy for dashboard: only administrator role.
-                options.AddPolicy("Manage administrator", policy => policy.RequireRole("administrator"));
+                options.AddPolicy("Manage accounts", policy => policy.RequireRole("administrator"));
                 // Policy for resources: user or administrator roles. 
                 options.AddPolicy("Access Resources", policy => policy.RequireRole("administrator", "user"));
             });

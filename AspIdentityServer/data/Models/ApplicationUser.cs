@@ -8,10 +8,9 @@ namespace AspIdentityServer.data.Models
 {
     public class ApplicationUser :  IdentityUser
     {
-        public string lievelingskleur { get; set; }
 
-        public string voornaam { get; set; }
+        public string givenname { get; set; }
 
-        public string achternaam { get; set; }
+        public string familyname { get; set; }
     }
 }
