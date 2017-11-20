@@ -17,6 +17,7 @@ namespace AspIdentityServer.data
         private readonly ApplicationDBcontext context;
         private readonly UserManager<ApplicationUser> usermanager;
         private readonly RoleManager<IdentityRole> rolemanager;
+        private readonly int COUNT_USERS = 500;
 
         public DatabaseInitializer(UserManager<ApplicationUser> usermanager, RoleManager<IdentityRole> rolemanager)
         {
@@ -55,7 +56,70 @@ namespace AspIdentityServer.data
             };
 
             var result = await usermanager.CreateAsync(user, "Admin01*");
+
+            List<Task> tasks = new List<Task>();
+
+            for (int i = 0; i < COUNT_USERS; i++)
+            {
+
+
+                Random r = new Random();
+
+                IdentityResult resultusers, roleresult;
+
+                do
+                {
+                    var usercreated = new ApplicationUser
+                    {
+                        givenname = GenerateName(r.Next(4, 10), r),
+                        familyname = GenerateName(r.Next(4, 10), r),
+                        AccessFailedCount = 0,
+                        Email = "admin@gmail.com",
+                        EmailConfirmed = false,
+                        LockoutEnabled = true,
+                        NormalizedEmail = "INFO@NORANT.BE",
+                        NormalizedUserName = "INFO@NORANT.BE",
+                        TwoFactorEnabled = false,
+                        UserName = GenerateName(r.Next(6, 11), r)
+                    };
+
+                    resultusers = await usermanager.CreateAsync(usercreated, "Admin01*");
+
+                    roleresult = await usermanager.AddToRoleAsync(usercreated, "user");
+
+                } while (resultusers.Succeeded && roleresult.Succeeded);
+            }
+
             
+
+
+
+
         }
+
+
+
+
+        private string GenerateName(int len, Random r)
+        {
+            
+            string[] consonants = { "b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "l", "n", "p", "q", "r", "s", "sh", "zh", "t", "v", "w", "x" };
+            string[] vowels = { "a", "e", "i", "o", "u", "ae", "y" };
+            string Name = "";
+            Name += consonants[r.Next(consonants.Length)].ToUpper();
+            Name += vowels[r.Next(vowels.Length)];
+            int b = 2; 
+            while (b < len)
+            {
+                Name += consonants[r.Next(consonants.Length)];
+                b++;
+                Name += vowels[r.Next(vowels.Length)];
+                b++;
+            }
+
+            return Name;
+        }
+
+
     }
 }

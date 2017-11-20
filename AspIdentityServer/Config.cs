@@ -46,9 +46,7 @@ namespace AspIdentityServer
                     AllowedGrantTypes = GrantTypes.ResourceOwnerPassword, // Resource Owner Password Credential grant.
                     AllowAccessTokensViaBrowser = true,
                     RequireClientSecret = false, // This client does not need a secret to request tokens from the token endpoint.
-
-                    AccessTokenLifetime = 3600, // Lifetime of access token in seconds.
-
+                    AccessTokenLifetime = 3600, // Lifetime of access token in seconds
                     AllowedScopes = {
                         IdentityServerConstants.StandardScopes.OpenId, // For UserInfo endpoint.
                         IdentityServerConstants.StandardScopes.Profile,

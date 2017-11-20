@@ -43,43 +43,41 @@ namespace AspIdentityServer.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Create([FromBody]CreateUserForm model)
         {
-            
-                var user = new ApplicationUser
-                {
-                    givenname = model.givenname,
-                    familyname = model.familyname,
-                    AccessFailedCount = 0,
-                    Email = model.email,
-                    EmailConfirmed = false,
-                    LockoutEnabled = true,
-                    NormalizedEmail = model.username.ToUpper(),
-                    NormalizedUserName = model.username.ToUpper(),
-                    TwoFactorEnabled = false,
-                    UserName = model.username
-                };
+
+            var user = new ApplicationUser
+            {
+                givenname = model.givenname,
+                familyname = model.familyname,
+                AccessFailedCount = 0,
+                Email = model.email,
+                EmailConfirmed = false,
+                LockoutEnabled = true,
+                NormalizedEmail = model.username.ToUpper(),
+                NormalizedUserName = model.username.ToUpper(),
+                TwoFactorEnabled = false,
+                UserName = model.username
+            };
 
 
-                if (!model.password.Equals(model.passwordvalidate))
-                {
-                    return BadRequest("Passwords don't match");
-                }
-
-                var result = await usermanager.CreateAsync(user, model.password);
-
-                if (result.Succeeded)
-                {
-                    var roleresult = await usermanager.AddToRoleAsync(user, model.rolename);
-                    if (roleresult.Succeeded)
-                    {
-                        return Ok();
-                    }
-
-                }
-
+            if (!model.password.Equals(model.passwordvalidate))
+            {
                 return BadRequest("Passwords don't match");
-            
-        }
+            }
 
-      
+            var result = await usermanager.CreateAsync(user, model.password);
+
+            if (result.Succeeded)
+            {
+                var roleresult = await usermanager.AddToRoleAsync(user, model.rolename);
+                if (roleresult.Succeeded)
+                {
+                    return Ok();
+                }
+
+            }
+
+            return BadRequest("Passwords don't match");
+
+        }  
     }
 }
