@@ -14,5 +14,6 @@ namespace AspIdentityServer.data
             : base(options)
         {
         }
+        public DbSet<AspIdentityServer.data.Models.Post> Post { get; set; }
     }
 }

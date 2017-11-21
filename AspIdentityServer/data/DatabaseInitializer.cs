@@ -59,16 +59,16 @@ namespace AspIdentityServer.data
             var roleresult = await usermanager.AddToRoleAsync(user, "administrator");
 
 
-            for (int i = 0; i < COUNT_USERS; i++)
-            {
+           
 
 
                 Random r = new Random();
-
+                int tempusercount = 0;
                 IdentityResult resultusers, roleresultusers;
 
                 do
                 {
+                   
                     var usercreated = new ApplicationUser
                     {
                         givenname = GenerateName(r.Next(4, 10), r),
@@ -87,8 +87,10 @@ namespace AspIdentityServer.data
 
                     roleresultusers = await usermanager.AddToRoleAsync(usercreated, "user");
 
-                } while (resultusers.Succeeded && roleresultusers.Succeeded);
-            }
+                    tempusercount++;
+
+                } while (resultusers.Succeeded && roleresultusers.Succeeded &&  tempusercount < COUNT_USERS);
+            
         }
         
         private string GenerateName(int len, Random r)
