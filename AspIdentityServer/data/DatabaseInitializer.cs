@@ -17,7 +17,7 @@ namespace AspIdentityServer.data
         private readonly ApplicationDBcontext context;
         private readonly UserManager<ApplicationUser> usermanager;
         private readonly RoleManager<IdentityRole> rolemanager;
-        private readonly int COUNT_USERS = 500;
+        private readonly int COUNT_USERS = 20;
 
         public DatabaseInitializer(UserManager<ApplicationUser> usermanager, RoleManager<IdentityRole> rolemanager)
         {
@@ -56,8 +56,8 @@ namespace AspIdentityServer.data
             };
 
             var result = await usermanager.CreateAsync(user, "Admin01*");
+            var roleresult = await usermanager.AddToRoleAsync(user, "administrator");
 
-            List<Task> tasks = new List<Task>();
 
             for (int i = 0; i < COUNT_USERS; i++)
             {
@@ -65,7 +65,7 @@ namespace AspIdentityServer.data
 
                 Random r = new Random();
 
-                IdentityResult resultusers, roleresult;
+                IdentityResult resultusers, roleresultusers;
 
                 do
                 {
@@ -85,21 +85,12 @@ namespace AspIdentityServer.data
 
                     resultusers = await usermanager.CreateAsync(usercreated, "Admin01*");
 
-                    roleresult = await usermanager.AddToRoleAsync(usercreated, "user");
+                    roleresultusers = await usermanager.AddToRoleAsync(usercreated, "user");
 
-                } while (resultusers.Succeeded && roleresult.Succeeded);
+                } while (resultusers.Succeeded && roleresultusers.Succeeded);
             }
-
-            
-
-
-
-
         }
-
-
-
-
+        
         private string GenerateName(int len, Random r)
         {
             

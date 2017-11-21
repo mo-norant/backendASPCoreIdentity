@@ -1,1 +1,4 @@
 frontend/userfrontend/node_modules
+AspIdentityServer/obj
+.vs
+AspIdentityServer/bin/

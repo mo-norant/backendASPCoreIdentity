@@ -9,6 +9,8 @@ using AspIdentityServer.data;
 using Microsoft.AspNetCore.Authorization;
 using IdentityServer4.AccessTokenValidation;
 using AspIdentityServer.data.FormModels;
+using System.Security.Claims;
+using IdentityModel;
 
 namespace AspIdentityServer.Controllers
 {
@@ -66,11 +68,18 @@ namespace AspIdentityServer.Controllers
 
             var result = await usermanager.CreateAsync(user, model.password);
 
+
             if (result.Succeeded)
             {
                 var roleresult = await usermanager.AddToRoleAsync(user, model.rolename);
+
                 if (roleresult.Succeeded)
                 {
+                    var claims = new List<Claim> {
+                    new Claim(type: JwtClaimTypes.GivenName, value: user.givenname),
+                    new Claim(type: JwtClaimTypes.FamilyName, value: user.familyname),
+                     };
+                    await usermanager.AddClaimsAsync(user, claims);
                     return Ok();
                 }
 
@@ -79,5 +88,23 @@ namespace AspIdentityServer.Controllers
             return BadRequest("Passwords don't match");
 
         }  
+
+        
+        [HttpGet("users")]
+        public async Task<IActionResult> getAllUsers(string rolename)
+        {
+
+            var role = await rolemanager.FindByNameAsync(rolename);
+            var users = await usermanager.GetUsersInRoleAsync(role.Name);
+
+            foreach (var user in users)
+            {
+                user.PasswordHash = "";
+            }
+
+            return new JsonResult(users);
+        }
+        
+       
     }
 }
