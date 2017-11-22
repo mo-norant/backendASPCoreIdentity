@@ -18,6 +18,9 @@ import { RegisterComponent } from './body/register/register.component';
 import { HomeComponent } from './body/home/home.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 
+import { routing  } from './routes/routes';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +38,8 @@ import { NotfoundComponent } from './notfound/notfound.component';
     RouterModule,
     BrowserAnimationsModule,
    HttpClientModule,
-   MatToolbarModule
+   MatToolbarModule,
+   routing
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
