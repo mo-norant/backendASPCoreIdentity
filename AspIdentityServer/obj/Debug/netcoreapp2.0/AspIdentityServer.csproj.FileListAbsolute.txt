@@ -20,3 +20,14 @@ C:\Users\Mo\OneDrive\Schooljaar 2017-2018\AspNG\backendASPCoreIdentity\AspIdenti
 C:\Users\Mo\OneDrive\Schooljaar 2017-2018\AspNG\backendASPCoreIdentity\AspIdentityServer\obj\Debug\netcoreapp2.0\AspIdentityServer.AssemblyInfo.cs
 C:\Users\Mo\OneDrive\Schooljaar 2017-2018\AspNG\backendASPCoreIdentity\AspIdentityServer\obj\Debug\netcoreapp2.0\AspIdentityServer.dll
 C:\Users\Mo\OneDrive\Schooljaar 2017-2018\AspNG\backendASPCoreIdentity\AspIdentityServer\obj\Debug\netcoreapp2.0\AspIdentityServer.pdb
+C:\Users\axelle\Documents\Git\backendASPCoreIdentity\AspIdentityServer\bin\Debug\netcoreapp2.0\AspIdentityServer.deps.json
+C:\Users\axelle\Documents\Git\backendASPCoreIdentity\AspIdentityServer\bin\Debug\netcoreapp2.0\AspIdentityServer.runtimeconfig.json
+C:\Users\axelle\Documents\Git\backendASPCoreIdentity\AspIdentityServer\bin\Debug\netcoreapp2.0\AspIdentityServer.runtimeconfig.dev.json
+C:\Users\axelle\Documents\Git\backendASPCoreIdentity\AspIdentityServer\bin\Debug\netcoreapp2.0\AspIdentityServer.dll
+C:\Users\axelle\Documents\Git\backendASPCoreIdentity\AspIdentityServer\bin\Debug\netcoreapp2.0\AspIdentityServer.pdb
+C:\Users\axelle\Documents\Git\backendASPCoreIdentity\AspIdentityServer\obj\Debug\netcoreapp2.0\AspIdentityServer.csprojResolveAssemblyReference.cache
+C:\Users\axelle\Documents\Git\backendASPCoreIdentity\AspIdentityServer\obj\Debug\netcoreapp2.0\AspIdentityServer.csproj.CoreCompileInputs.cache
+C:\Users\axelle\Documents\Git\backendASPCoreIdentity\AspIdentityServer\obj\Debug\netcoreapp2.0\AspIdentityServer.AssemblyInfoInputs.cache
+C:\Users\axelle\Documents\Git\backendASPCoreIdentity\AspIdentityServer\obj\Debug\netcoreapp2.0\AspIdentityServer.AssemblyInfo.cs
+C:\Users\axelle\Documents\Git\backendASPCoreIdentity\AspIdentityServer\obj\Debug\netcoreapp2.0\AspIdentityServer.dll
+C:\Users\axelle\Documents\Git\backendASPCoreIdentity\AspIdentityServer\obj\Debug\netcoreapp2.0\AspIdentityServer.pdb

@@ -23,7 +23,7 @@ export class AuthService {
   }
 
 
-  public private(username: string, password: string){
+  public login(username: string, password: string){
 
     var headers = new HttpHeaders();
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
