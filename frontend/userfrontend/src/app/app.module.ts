@@ -3,22 +3,28 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { BodyComponent } from './body/body.component';
-import { RegisterComponent } from './body/register/register.component';
-import { LoginComponent } from './body/login/login.component';
+
 
 import { MatMenuModule, MatButtonModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 import { RouterModule, Routes } from '@angular/router';
 import { AuthService } from './services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
+import { TopbarComponent } from './topbar/topbar.component';
+import { LoginComponent } from './body/login/login.component';
+import { RegisterComponent } from './body/register/register.component';
+import { HomeComponent } from './body/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BodyComponent,
+    TopbarComponent,
+    LoginComponent,
     RegisterComponent,
-    LoginComponent
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +32,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatButtonModule,
     RouterModule,
     BrowserAnimationsModule,
-   HttpClientModule
+   HttpClientModule,
+   MatToolbarModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

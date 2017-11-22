@@ -7,8 +7,22 @@ import { AuthService } from './services/auth.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  
+  isMaartenSlim : boolean= false;
+  isMaartenKnap : boolean = true;
+  naam : string  = "mo";
+  leeftijd : number = 15;
+
   constructor(){
     
+   this.naam = "francois";
     
   }
+
+  private doIets(){
+    alert();
+  }
+
+  
 }
