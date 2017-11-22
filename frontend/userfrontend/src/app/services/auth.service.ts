@@ -2,20 +2,29 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Constants } from '../utils/constants';
 import { Http, Headers, Response, RequestOptions,  } from '@angular/http';
+import {Router} from "@angular/router";
 
 @Injectable()
 export class AuthService {
 
-  constructor(private http: HttpClient) {
-
-    
-
+  constructor(private http: HttpClient, private router : Router) {
+     
    }
 
 
 
   public getToken(){
+    
+      var tokenstring  = localStorage.getItem('tokenUser');
+      if(tokenstring != null){
+        var token = JSON.parse(tokenstring); 
+        console.log(token["access_token"])
+        return true;
+      }
 
+      return false;
+
+    
   }
 
   private setToken(){
@@ -41,11 +50,13 @@ export class AuthService {
     };
 
  
-   
-    return this.http.post(Constants.GET_TOKEN, body.toString(), options).subscribe(data => {
-      console.log(data);
+     this.http.post(Constants.GET_TOKEN, body.toString(), options).subscribe(data => {
 
-      
+      if(data["access_token"]){
+        data["life"] = Date + data['expires_in'];
+        localStorage.setItem('tokenUser', JSON.stringify(data));
+        this.router.navigate(['dashboard']);
+      }
     });
 
   }

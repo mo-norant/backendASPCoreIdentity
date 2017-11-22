@@ -17,7 +17,8 @@ error
   }
 
   public login(){
-    this.auth.login("info@norant.be","Admin01*").subscribe(
+    this.auth.login("info@norant.be","Admin01*");
+    /* .subscribe(
       data => {
         console.log(data)
       },
@@ -28,7 +29,7 @@ error
       () => {
         console.log("I'm done subscribing to this request.");
       }
-    );
+    ); */ // Removed because we're now subscribing in auth.service.ts
   }
 
 }

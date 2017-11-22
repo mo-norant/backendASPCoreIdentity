@@ -10,7 +10,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
 
 import { RouterModule, Routes } from '@angular/router';
+import { GuardService } from './guard.service';
 import { AuthService } from './services/auth.service';
+
 import { HttpClientModule } from '@angular/common/http';
 import { TopbarComponent } from './topbar/topbar.component';
 import { LoginComponent } from './body/login/login.component';
@@ -19,6 +21,7 @@ import { HomeComponent } from './body/home/home.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 
 import { routing  } from './routes/routes';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
@@ -29,7 +32,8 @@ import { routing  } from './routes/routes';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +45,7 @@ import { routing  } from './routes/routes';
    MatToolbarModule,
    routing
   ],
-  providers: [AuthService],
+  providers: [AuthService, GuardService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
