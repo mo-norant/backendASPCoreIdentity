@@ -16,6 +16,7 @@ import { TopbarComponent } from './topbar/topbar.component';
 import { LoginComponent } from './body/login/login.component';
 import { RegisterComponent } from './body/register/register.component';
 import { HomeComponent } from './body/home/home.component';
+import { NotfoundComponent } from './notfound/notfound.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { HomeComponent } from './body/home/home.component';
     TopbarComponent,
     LoginComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    NotfoundComponent
   ],
   imports: [
     BrowserModule,
