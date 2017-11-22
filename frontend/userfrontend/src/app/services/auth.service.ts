@@ -42,7 +42,11 @@ export class AuthService {
 
  
    
-    return this.http.post(Constants.GET_TOKEN, body.toString(), options)
+    return this.http.post(Constants.GET_TOKEN, body.toString(), options).subscribe(data => {
+      console.log(data);
+
+      
+    });
 
   }
 
