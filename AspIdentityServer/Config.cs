@@ -58,6 +58,13 @@ namespace AspIdentityServer
                     AbsoluteRefreshTokenLifetime = 7200,
                     SlidingRefreshTokenLifetime = 900,
                     RefreshTokenExpiration = TokenExpiration.Sliding,
+                     AllowedCorsOrigins = new List<string>
+            {
+                "http://127.0.0.1:4200",
+                "http://localhost:4200",
+                "*"
+
+            }
                 }
                 
 

@@ -93,6 +93,9 @@ namespace AspIdentityServer
 
             });
 
+            services.AddCors();
+
+
             services.AddMvc();
 
 

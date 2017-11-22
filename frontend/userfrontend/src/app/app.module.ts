@@ -10,6 +10,8 @@ import { MatMenuModule, MatButtonModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { RouterModule, Routes } from '@angular/router';
+import { AuthService } from './services/auth.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,9 +25,10 @@ import { RouterModule, Routes } from '@angular/router';
     MatMenuModule,
     MatButtonModule,
     RouterModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+   HttpClientModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
